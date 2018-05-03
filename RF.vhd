@@ -29,16 +29,14 @@ begin
 			if(rst = '1')then
 				crs1 <= (others=>'0');
 				crs2 <= (others=>'0');
+				rf <= (others => x"00000000");
 			else
 				crs1 <= rf(conv_integer(rs1));
 				crs2 <= rf(conv_integer(rs2));
 				IF rd /= "00000" THEN 
 						rf(conv_integer(rd)) <= dwr;
-					ELSE 
-						rf(conv_integer(rd)) <= (Others => '0');
 				end if;
 			end if;
 		
 	end process;
 end Behavioral;
-
