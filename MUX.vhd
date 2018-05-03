@@ -16,12 +16,11 @@ begin
 
 PROCESS (CRS2, outSEU, I) IS
        BEGIN
-         CASE I IS
-           WHEN '0' => outMUX <= (others => '0');
-           WHEN '1' => outMUX <= CRS2;
-           WHEN OTHERS => outMUX <= (others => '0');
-         END CASE;
-       END PROCESS;
+         if(I = '0')then 
+				outMux <= CRS2;
+				else 
+				outMux <= outSEU;
+			end if;
+		end process;
 
 end Behavioral;
-
