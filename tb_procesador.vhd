@@ -44,6 +44,9 @@ BEGIN
    -- Clock process definitions
    clk_process :process
    begin
+
+
+
 		clk <= '0';
 		wait for clk_period/2;
 		clk <= '1';
@@ -54,7 +57,6 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-		rst <= '0';
 		wait for 10 ns;
       rst <= '1';
       wait for 10 ns;	
