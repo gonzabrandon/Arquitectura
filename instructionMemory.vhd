@@ -4,12 +4,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use std.textio.all;
 
 
-
 entity instructionMemory is
     Port ( 
 			  --clk : in STD_LOGIC;
-			  address : in  STD_LOGIC_VECTOR (5 downto 0);
-           rst : in  STD_LOGIC;
+			  address : in  STD_LOGIC_VECTOR (31 downto 0);
+           reset : in  STD_LOGIC;
            outInstruction : out  STD_LOGIC_VECTOR (31 downto 0));
 end instructionMemory;
 
@@ -35,10 +34,10 @@ architecture arqInstructionMemory of instructionMemory is
 	
 begin
 --reset,address, instructions)
-	process(rst,address, instructions)--clk)
+	process(reset,address, instructions)--clk)
 	begin
 		--if(rising_edge(clk))then
-			if(rst = '1')then
+			if(reset = '1')then
 				outInstruction <= (others=>'0');
 			else
 				outInstruction <= instructions(conv_integer(address(5 downto 0)));
@@ -46,4 +45,3 @@ begin
 		--end if;
 	end process;
 end arqInstructionMemory;
-
