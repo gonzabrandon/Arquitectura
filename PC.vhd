@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -15,13 +14,14 @@ architecture Behavioral of PC is
 
 begin
 	process(CLK,rst)
+
+
 	begin
 	   if (rising_edge(clk)) then
-			if(rst = '1') then
-				PCout <= "00000000000000000000000000000000";
-			
-			else 
+			if(rst = '0') then
 				PCout <= PCAddr;
+			else 
+				PCout <= "00000000000000000000000000000000";
 				
 			end if;
 		end if;
@@ -29,4 +29,3 @@ begin
 	end process;
 
 end Behavioral;
-
