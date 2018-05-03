@@ -27,8 +27,8 @@ COMPONENT PC
 	
 	COMPONENT instructionMemory
 	PORT(
-		address : IN std_logic_vector(5 downto 0);
-		rst : IN std_logic;          
+		address : IN std_logic_vector(31 downto 0);
+		reset : IN std_logic;          
 		outInstruction : OUT std_logic_vector(31 downto 0)
 		);
 	END COMPONENT;
@@ -99,7 +99,7 @@ COMPONENT PC
 
 begin
 	inst_adder: sumador PORT MAP(
-		A => "00000000000000000000000000000100",
+		A => "00000000000000000000000000000001",
 		B => aux_pcout,
 		S => out_adder
 		);
@@ -120,8 +120,8 @@ begin
 	
 	inst_im: instructionMemory PORT MAP(
 		--clk => CLK,
-		rst => rst,
-		address => aux_pcout (5 downto 0),
+		reset => rst,
+		address => aux_pcout,
 		outInstruction => im_out
 	);
 	
@@ -163,4 +163,3 @@ begin
 	resultado <= aux_aluout;
 
 end Behavioral;
-
